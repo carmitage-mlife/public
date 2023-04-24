@@ -164,4 +164,4 @@ GOTO CLEANUP
 :CLEANUP
 if exist %TMP%\senseTmp.txt del %TMP%\senseTmp.txt
 pause
-EXIT /B %errorCode%'''
+EXIT /B %errorCode%
