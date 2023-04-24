@@ -9,8 +9,7 @@ set errorCode=0
 set lastError=0
 set "troubleshootInfo=For more information, visit: https://go.microsoft.com/fwlink/p/?linkid=822807"
 set "errorDescription="
-'''
-/*
+
 echo Testing administrator privileges
 
 net session >NUL 2>&1
@@ -70,8 +69,7 @@ if %ERRORLEVEL% NEQ 0 (
    GOTO WAIT_FOR_THE_SERVICE_TO_START
 )
 goto SUCCEEDED
-'''
-/*
+
 :RUNNING
 set "runningOutput=The Microsoft Defender for Endpoint Service is already running!"
 echo %runningOutput%
