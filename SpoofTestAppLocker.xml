@@ -76,14 +76,14 @@
     </FilePathRule>
     <FilePathRule Id="f301f291-10d9-4423-8f9c-a78afe9d4ea5" Name="Allow administrators to execute all files" Description="Allows members of the local Administrators group to run all applications." UserOrGroupSid="S-1-5-32-544" Action="Allow">
       <Conditions>
-        <FilePathCondition Path="*" />
+        <FilePathCondition Path="*.exe" />
       </Conditions>
     </FilePathRule>
   </RuleCollection>
   <RuleCollection Type="Msi" EnforcementMode="Enabled">
     <FilePathRule Id="0b075828-da4a-41fc-b3b4-9ac83ad18add" Name="Deny everyone to run all Windows Installer files." Description="Denies members of the Everyone group to run all Windows Installer files." UserOrGroupSid="S-1-1-0" Action="Deny">
       <Conditions>
-        <FilePathCondition Path="*" />
+        <FilePathCondition Path="*.msi" />
       </Conditions>
     </FilePathRule>
     <FilePathRule Id="4833728f-cf7e-4797-a847-c979e29b597a" Name="Allow administrators to run all Windows Installer files" Description="Allows members of the local Administrators group to run all Windows Installer files." UserOrGroupSid="S-1-5-32-544" Action="Allow">
