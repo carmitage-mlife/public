@@ -1,11 +1,11 @@
 <AppLockerPolicy Version="1">
   <RuleCollection Type="Dll" EnforcementMode="AuditOnly">
-    <FilePathRule Id="1d04fdc7-5e29-45b1-a0d7-f7e9293774f8" Name="Allows Admins All DLLs" Description="" UserOrGroupSid="S-1-5-32-544" Action="Allow">
+    <FilePathRule Id="1d04fdc7-5e29-45b1-a0d7-f7e9293774f8" Name="Allows administrators to execute all DLLs" Description="" UserOrGroupSid="S-1-5-32-544" Action="Allow">
       <Conditions>
         <FilePathCondition Path="*" />
       </Conditions>
     </FilePathRule>
-    <FilePathRule Id="7ca2deae-991c-4e26-b688-98137f9cc777" Name="Allow everyone DLLs in c:\Windows" Description="" UserOrGroupSid="S-1-1-0" Action="Allow">
+    <FilePathRule Id="7ca2deae-991c-4e26-b688-98137f9cc777" Name="Allow everyone to execute select DLLs located in the Windows folder" Description="" UserOrGroupSid="S-1-1-0" Action="Allow">
       <Conditions>
         <FilePathCondition Path="%WINDIR%\*" />
       </Conditions>
@@ -28,48 +28,93 @@
         <FilePathCondition Path="%WINDIR%\tracing\*" />
       </Exceptions>
     </FilePathRule>
-    <FilePathRule Id="f36fbeba-ab50-48c0-9361-41af365d82ce" Name="Allow everyone DLLs in c:\Prog. Files" Description="" UserOrGroupSid="S-1-1-0" Action="Allow">
+    <FilePathRule Id="f36fbeba-ab50-48c0-9361-41af365d82ce" Name="Allow everyone to execute all DLLs located in the Program Files folder" Description="Allows members of the Everyone group to load DLLs that are located in the Program Files folder." UserOrGroupSid="S-1-1-0" Action="Allow">
       <Conditions>
         <FilePathCondition Path="%PROGRAMFILES%\*" />
       </Conditions>
     </FilePathRule>
   </RuleCollection>
   <RuleCollection Type="Exe" EnforcementMode="Enabled">
-    <FilePathRule Id="afd4074c-4b47-4b55-bb6d-f35ea215408b" Name="Deny everyone cmd, pwsh, and shutdown" Description="" UserOrGroupSid="S-1-1-0" Action="Deny">
+    <FilePathRule Id="1712f2de-e1b6-4d3d-85a9-a7da49b796c1" Name="Deny everyone executables in the c:\Program Files" Description="" UserOrGroupSid="S-1-1-0" Action="Deny">
       <Conditions>
-        <FilePathCondition Path="*\cmd.exe" />
-        <FilePathCondition Path="*\powershell.exe" />
-        <FilePathCondition Path="*\shutdown.exe" />
-      </Conditions>
-    </FilePathRule>
-    <FilePathRule Id="f301f291-10d9-4423-8f9c-a78afe9d4ea5" Name="Allow administrators to execute all files" Description="" UserOrGroupSid="S-1-5-32-544" Action="Allow">
-      <Conditions>
-        <FilePathCondition Path="*" />
-      </Conditions>
-    </FilePathRule>
-  </RuleCollection>
-  <RuleCollection Type="Msi" EnforcementMode="Enabled">
-    <FilePathRule Id="0b075828-da4a-41fc-b3b4-9ac83ad18add" Name="Deny everyone all Windows Installer files." Description="" UserOrGroupSid="S-1-1-0" Action="Deny">
-      <Conditions>
-        <FilePathCondition Path="*" />
-      </Conditions>
-    </FilePathRule>
-    <FilePathRule Id="4833728f-cf7e-4797-a847-c979e29b597a" Name="Allow administrators all Windows Installer files" Description="" UserOrGroupSid="S-1-5-32-544" Action="Allow">
-      <Conditions>
-        <FilePathCondition Path="*" />
-      </Conditions>
-    </FilePathRule>
-  </RuleCollection>
-  <RuleCollection Type="Script" EnforcementMode="Enabled">
-    <FilePathRule Id="4a4170c6-feb8-44f6-bebf-78a319f197fe" Name="Deny everyone to run all scripts" Description="Denies members of the Everyone group to run scripts." UserOrGroupSid="S-1-1-0" Action="Deny">
-      <Conditions>
-        <FilePathCondition Path="*" />
+        <FilePathCondition Path="%PROGRAMFILES%\*" />
       </Conditions>
       <Exceptions>
-        <FilePathCondition Path="%WINDIR%\*" />
+        <FilePathCondition Path="*chrome.exe" />
+        <FilePathCondition Path="*firefox.exe" />
       </Exceptions>
     </FilePathRule>
-    <FilePathRule Id="ed97d0cb-15ff-430f-b82c-8d7832957725" Name="Allow Admins All Scripts" Description="" UserOrGroupSid="S-1-5-32-544" Action="Allow">
+    <FilePathRule Id="afd4074c-4b47-4b55-bb6d-f35ea215408b" Name="Deny everyone executables in c:\Windows folder" Description="" UserOrGroupSid="S-1-1-0" Action="Deny">
+      <Conditions>
+        <FilePathCondition Path="%WINDIR%\*" />
+      </Conditions>
+      <Exceptions>
+        <FilePathCondition Path="%SYSTEM32%\catroot2\*" />
+        <FilePathCondition Path="%SYSTEM32%\com\dmp\*" />
+        <FilePathCondition Path="%SYSTEM32%\FxsTmp\*" />
+        <FilePathCondition Path="%SYSTEM32%\spool\drivers\color\*" />
+        <FilePathCondition Path="%SYSTEM32%\spool\PRINTERS\*" />
+        <FilePathCondition Path="%SYSTEM32%\spool\SERVERS\*" />
+        <FilePathCondition Path="%SYSTEM32%\Tasks\*" />
+        <FilePathCondition Path="%WINDIR%\Debug\*" />
+        <FilePathCondition Path="%WINDIR%\PCHEALTH\ERRORREP\*" />
+        <FilePathCondition Path="%WINDIR%\Registration\*" />
+        <FilePathCondition Path="%WINDIR%\SysWOW64\com\dmp\*" />
+        <FilePathCondition Path="%WINDIR%\SysWOW64\FxsTmp\*" />
+        <FilePathCondition Path="%WINDIR%\SysWOW64\Tasks\*" />
+        <FilePathCondition Path="%WINDIR%\Tasks\*" />
+        <FilePathCondition Path="%WINDIR%\Temp\*" />
+        <FilePathCondition Path="%WINDIR%\tracing\*" />
+      </Exceptions>
+    </FilePathRule>
+    <FilePathRule Id="f301f291-10d9-4423-8f9c-a78afe9d4ea5" Name="Allow admins to execute all files" Description="" UserOrGroupSid="S-1-5-32-544" Action="Allow">
+      <Conditions>
+        <FilePathCondition Path="*" />
+      </Conditions>
+    </FilePathRule>
+  </RuleCollection>
+  <RuleCollection Type="Msi" EnforcementMode="AuditOnly">
+    <FilePathRule Id="0b075828-da4a-41fc-b3b4-9ac83ad18add" Name="Deny everyone Windows Installer files." Description="" UserOrGroupSid="S-1-1-0" Action="Deny">
+      <Conditions>
+        <FilePathCondition Path="*" />
+      </Conditions>
+    </FilePathRule>
+    <FilePathRule Id="4833728f-cf7e-4797-a847-c979e29b597a" Name="Allow admins all Windows Installer files" Description="" UserOrGroupSid="S-1-5-32-544" Action="Allow">
+      <Conditions>
+        <FilePathCondition Path="*" />
+      </Conditions>
+    </FilePathRule>
+  </RuleCollection>
+  <RuleCollection Type="Script" EnforcementMode="AuditOnly">
+    <FilePathRule Id="4a4170c6-feb8-44f6-bebf-78a319f197fe" Name="Deny everyone to run all scripts" Description="" UserOrGroupSid="S-1-1-0" Action="Deny">
+      <Conditions>
+        <FilePathCondition Path="*" />
+      </Conditions>
+    </FilePathRule>
+    <FilePathRule Id="8f42d1d3-5f29-469d-8f37-6f01f6c3b2f4" Name="Allow everyone to run scripts in c:\Windows" Description="" UserOrGroupSid="S-1-1-0" Action="Allow">
+      <Conditions>
+        <FilePathCondition Path="%WINDIR%\*" />
+      </Conditions>
+      <Exceptions>
+        <FilePathCondition Path="%SYSTEM32%\catroot2\*" />
+        <FilePathCondition Path="%SYSTEM32%\com\dmp\*" />
+        <FilePathCondition Path="%SYSTEM32%\FxsTmp\*" />
+        <FilePathCondition Path="%SYSTEM32%\spool\drivers\color\*" />
+        <FilePathCondition Path="%SYSTEM32%\spool\PRINTERS\*" />
+        <FilePathCondition Path="%SYSTEM32%\spool\SERVERS\*" />
+        <FilePathCondition Path="%SYSTEM32%\Tasks\*" />
+        <FilePathCondition Path="%WINDIR%\Debug\*" />
+        <FilePathCondition Path="%WINDIR%\PCHEALTH\ERRORREP\*" />
+        <FilePathCondition Path="%WINDIR%\Registration\*" />
+        <FilePathCondition Path="%WINDIR%\SysWOW64\com\dmp\*" />
+        <FilePathCondition Path="%WINDIR%\SysWOW64\FxsTmp\*" />
+        <FilePathCondition Path="%WINDIR%\SysWOW64\Tasks\*" />
+        <FilePathCondition Path="%WINDIR%\Tasks\*" />
+        <FilePathCondition Path="%WINDIR%\Temp\*" />
+        <FilePathCondition Path="%WINDIR%\tracing\*" />
+      </Exceptions>
+    </FilePathRule>
+    <FilePathRule Id="ed97d0cb-15ff-430f-b82c-8d7832957725" Name="Allow Admins All scripts" Description="" UserOrGroupSid="S-1-5-32-544" Action="Allow">
       <Conditions>
         <FilePathCondition Path="*" />
       </Conditions>
@@ -77,11 +122,11 @@
   </RuleCollection>
   <RuleCollection Type="Appx" EnforcementMode="AuditOnly">
     <FilePublisherRule Action="Allow" UserOrGroupSid="S-1-1-0" Description="Allows members of the Everyone group to run packaged apps that are signed." Name="(Default Rule) All signed packaged apps" Id="a9e18c21-ff8f-43cf-b9fc-db40eed6936a">       	
-      <Conditions>       
-        <FilePublisherCondition BinaryName="*" ProductName="*" PublisherName="*">
+	    <Conditions>       
+	      <FilePublisherCondition BinaryName="*" ProductName="*" PublisherName="*">
           <BinaryVersionRange LowSection="0.0.0.0" HighSection="*"/>
         </FilePublisherCondition>
-      </Conditions>
+	    </Conditions>
     </FilePublisherRule>
   </RuleCollection>
 </AppLockerPolicy>
