@@ -34,7 +34,7 @@
       </Conditions>
     </FilePathRule>
   </RuleCollection>
-  <RuleCollection Type="Exe" EnforcementMode="Enforced">
+  <RuleCollection Type="Exe" EnforcementMode="Enabled">
     <FilePathRule Id="afd4074c-4b47-4b55-bb6d-f35ea215408b" Name="Deny everyone cmd, pwsh, and shutdown" Description="" UserOrGroupSid="S-1-1-0" Action="Deny">
       <Conditions>
         <FilePathCondition Path="*cmd.exe" />
@@ -48,7 +48,7 @@
       </Conditions>
     </FilePathRule>
   </RuleCollection>
-  <RuleCollection Type="Msi" EnforcementMode="Enforced">
+  <RuleCollection Type="Msi" EnforcementMode="Enabled">
     <FilePathRule Id="0b075828-da4a-41fc-b3b4-9ac83ad18add" Name="Deny everyone all Windows Installer files." Description="" UserOrGroupSid="S-1-1-0" Action="Deny">
       <Conditions>
         <FilePathCondition Path="*" />
@@ -60,7 +60,7 @@
       </Conditions>
     </FilePathRule>
   </RuleCollection>
-  <RuleCollection Type="Script" EnforcementMode="Enforced">
+  <RuleCollection Type="Script" EnforcementMode="Enabled">
     <FilePathRule Id="4a4170c6-feb8-44f6-bebf-78a319f197fe" Name="Deny everyone to run all scripts" Description="Denies members of the Everyone group to run scripts." UserOrGroupSid="S-1-1-0" Action="Deny">
       <Conditions>
         <FilePathCondition Path="*" />
