@@ -1,5 +1,5 @@
 <AppLockerPolicy Version="1">
-  <RuleCollection Type="Dll" EnforcementMode="Enabled">
+  <RuleCollection Type="Dll" EnforcementMode="AuditOnly">
     <FilePathRule Id="1d04fdc7-5e29-45b1-a0d7-f7e9293774f8" Name="Allows administrators to execute all DLLs" Description="Allows members of the local Administrators group to load all DLLs." UserOrGroupSid="S-1-5-32-544" Action="Allow">
       <Conditions>
         <FilePathCondition Path="*" />
@@ -34,7 +34,7 @@
       </Conditions>
     </FilePathRule>
   </RuleCollection>
-  <RuleCollection Type="Exe" EnforcementMode="Enabled">
+  <RuleCollection Type="Exe" EnforcementMode="AuditOnly">
     <FilePathRule Id="afd4074c-4b47-4b55-bb6d-f35ea215408b" Name="Deny everyone to execute all files located in the Windows folder" Description="Denies members of the Everyone group to run applications that are located in the Windows folder." UserOrGroupSid="S-1-1-0" Action="Deny">
       <Conditions>
         <FilePathCondition Path="*cmd.exe" />
@@ -48,7 +48,7 @@
       </Conditions>
     </FilePathRule>
   </RuleCollection>
-  <RuleCollection Type="Msi" EnforcementMode="Enabled">
+  <RuleCollection Type="Msi" EnforcementMode="AuditOnly">
     <FilePathRule Id="0b075828-da4a-41fc-b3b4-9ac83ad18add" Name="Deny everyone to run all Windows Installer files." Description="Denies members of the Everyone group to run all Windows Installer files." UserOrGroupSid="S-1-1-0" Action="Deny">
       <Conditions>
         <FilePathCondition Path="*" />
@@ -60,7 +60,7 @@
       </Conditions>
     </FilePathRule>
   </RuleCollection>
-  <RuleCollection Type="Script" EnforcementMode="Enabled">
+  <RuleCollection Type="Script" EnforcementMode="AuditOnly">
     <FilePathRule Id="4a4170c6-feb8-44f6-bebf-78a319f197fe" Name="Deny everyone to run all scripts" Description="Denies members of the Everyone group to run scripts." UserOrGroupSid="S-1-1-0" Action="Deny">
       <Conditions>
         <FilePathCondition Path="*" />
@@ -96,13 +96,13 @@
     </FilePathRule>
   </RuleCollection>
   <RuleCollection Type="Appx" EnforcementMode="AuditOnly">
-        <FilePublisherRule Action="Allow" UserOrGroupSid="S-1-1-0" Description="Allows members of the Everyone group to run packaged apps that are signed." Name="(Default Rule) All signed packaged apps" Id="a9e18c21-ff8f-43cf-b9fc-db40eed6936a">       	
-	<Conditions>       
-	      <FilePublisherCondition BinaryName="*" ProductName="*" PublisherName="*">
-		<BinaryVersionRange LowSection="0.0.0.0" HighSection="*"/>
-	       </FilePublisherCondition>
-	</Conditions>
-       </FilePublisherRule>
+    <FilePublisherRule Action="Allow" UserOrGroupSid="S-1-1-0" Description="Allows members of the Everyone group to run packaged apps that are signed." Name="(Default Rule) All signed packaged apps" Id="a9e18c21-ff8f-43cf-b9fc-db40eed6936a">       	
+      <Conditions>       
+        <FilePublisherCondition BinaryName="*" ProductName="*" PublisherName="*">
+          <BinaryVersionRange LowSection="0.0.0.0" HighSection="*"/>
+        </FilePublisherCondition>
+      </Conditions>
+    </FilePublisherRule>
   </RuleCollection>
 </AppLockerPolicy>
 
