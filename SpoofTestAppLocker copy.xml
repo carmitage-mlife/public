@@ -35,12 +35,44 @@
     </FilePathRule>
   </RuleCollection>
   <RuleCollection Type="Exe" EnforcementMode="Enabled">
+    <FilePublisherRule Id="187ae870-255e-42d7-8ef9-9a8434a70716" Name="Prevent administrators from easily running the Internet Explorer web browser" Description="" UserOrGroupSid="S-1-5-32-544" Action="Deny">
+      <Conditions>
+        <FilePublisherCondition PublisherName="O=MICROSOFT CORPORATION, L=REDMOND, S=WASHINGTON, C=US" ProductName="WINDOWS® INTERNET EXPLORER" BinaryName="IEXPLORE.EXE">
+          <BinaryVersionRange LowSection="*" HighSection="*" />
+        </FilePublisherCondition>
+      </Conditions>
+    </FilePublisherRule>
+    <FilePathRule Id="1712f2de-e1b6-4d3d-85a9-a7da49b796c1" Name="Deny everyone to execute all files located in the Program Files folder" Description="Denies members of the Everyone group to run applications that are located in the Program Files folder." UserOrGroupSid="S-1-1-0" Action="Deny">
+      <Conditions>
+        <FilePathCondition Path="%PROGRAMFILES%\*" />
+      </Conditions>
+      <Exceptions>
+        <FilePathCondition Path="*chrome.exe" />
+        <FilePathCondition Path="*firefox.exe" />
+      </Exceptions>
+    </FilePathRule>
     <FilePathRule Id="afd4074c-4b47-4b55-bb6d-f35ea215408b" Name="Deny everyone to execute all files located in the Windows folder" Description="Denies members of the Everyone group to run applications that are located in the Windows folder." UserOrGroupSid="S-1-1-0" Action="Deny">
       <Conditions>
-        <FilePathCondition Path="*cmd.exe" />
-        <FilePathCondition Path="*powershell.exe" />
-        <FilePathCondition Path="*shutdown.exe" />
+        <FilePathCondition Path="%WINDIR%\*" />
       </Conditions>
+      <Exceptions>
+        <FilePathCondition Path="%SYSTEM32%\catroot2\*" />
+        <FilePathCondition Path="%SYSTEM32%\com\dmp\*" />
+        <FilePathCondition Path="%SYSTEM32%\FxsTmp\*" />
+        <FilePathCondition Path="%SYSTEM32%\spool\drivers\color\*" />
+        <FilePathCondition Path="%SYSTEM32%\spool\PRINTERS\*" />
+        <FilePathCondition Path="%SYSTEM32%\spool\SERVERS\*" />
+        <FilePathCondition Path="%SYSTEM32%\Tasks\*" />
+        <FilePathCondition Path="%WINDIR%\Debug\*" />
+        <FilePathCondition Path="%WINDIR%\PCHEALTH\ERRORREP\*" />
+        <FilePathCondition Path="%WINDIR%\Registration\*" />
+        <FilePathCondition Path="%WINDIR%\SysWOW64\com\dmp\*" />
+        <FilePathCondition Path="%WINDIR%\SysWOW64\FxsTmp\*" />
+        <FilePathCondition Path="%WINDIR%\SysWOW64\Tasks\*" />
+        <FilePathCondition Path="%WINDIR%\Tasks\*" />
+        <FilePathCondition Path="%WINDIR%\Temp\*" />
+        <FilePathCondition Path="%WINDIR%\tracing\*" />
+      </Exceptions>
     </FilePathRule>
     <FilePathRule Id="f301f291-10d9-4423-8f9c-a78afe9d4ea5" Name="Allow administrators to execute all files" Description="Allows members of the local Administrators group to run all applications." UserOrGroupSid="S-1-5-32-544" Action="Allow">
       <Conditions>
@@ -51,7 +83,7 @@
   <RuleCollection Type="Msi" EnforcementMode="Enabled">
     <FilePathRule Id="0b075828-da4a-41fc-b3b4-9ac83ad18add" Name="Deny everyone to run all Windows Installer files." Description="Denies members of the Everyone group to run all Windows Installer files." UserOrGroupSid="S-1-1-0" Action="Deny">
       <Conditions>
-        <FilePathCondition Path="*" />
+        <FilePathCondition Path="*.msi" />
       </Conditions>
     </FilePathRule>
     <FilePathRule Id="4833728f-cf7e-4797-a847-c979e29b597a" Name="Allow administrators to run all Windows Installer files" Description="Allows members of the local Administrators group to run all Windows Installer files." UserOrGroupSid="S-1-5-32-544" Action="Allow">
