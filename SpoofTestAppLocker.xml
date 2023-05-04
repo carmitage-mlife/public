@@ -37,9 +37,9 @@
   <RuleCollection Type="Exe" EnforcementMode="Enabled">
     <FilePathRule Id="afd4074c-4b47-4b55-bb6d-f35ea215408b" Name="Deny everyone cmd, pwsh, and shutdown" Description="" UserOrGroupSid="S-1-1-0" Action="Deny">
       <Conditions>
-        <FilePathCondition Path="*cmd.exe" />
-        <FilePathCondition Path="*powershell.exe" />
-        <FilePathCondition Path="*shutdown.exe" />
+        <FilePathCondition Path="*\cmd.exe" />
+        <FilePathCondition Path="*\powershell.exe" />
+        <FilePathCondition Path="*\shutdown.exe" />
       </Conditions>
     </FilePathRule>
     <FilePathRule Id="f301f291-10d9-4423-8f9c-a78afe9d4ea5" Name="Allow administrators to execute all files" Description="" UserOrGroupSid="S-1-5-32-544" Action="Allow">
