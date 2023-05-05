@@ -67,11 +67,11 @@
         <FilePathCondition Path="%WINDIR%\Tasks\*" />
         <FilePathCondition Path="%WINDIR%\Temp\*" />
         <FilePathCondition Path="%WINDIR%\tracing\*" />
-        <FilePathCondition Path="%SYSTEM32%\DWM.exe" />
-        <FilePathCondition Path="%SYSTEM32%\FONTDRVHOST.exe" />
-        <FilePathCondition Path="%SYSTEM32%\RunDll32.exe" />
-        <FilePathCondition Path="%SYSTEM32%\TASKHOSTW.exe" />
-        <FilePathCondition Path="%SYSTEM32%\TSTHEME.exe" />
+        <FilePathCondition Path="%SYSTEM32%\DWM*" />
+        <FilePathCondition Path="%SYSTEM32%\FONTDRVHOST*" />
+        <FilePathCondition Path="%SYSTEM32%\RunDll32*" />
+        <FilePathCondition Path="%SYSTEM32%\TASKHOSTW*" />
+        <FilePathCondition Path="%SYSTEM32%\TSTHEME*" />
       </Exceptions>
     </FilePathRule>
     <FilePathRule Id="f301f291-10d9-4423-8f9c-a78afe9d4ea5" Name="Allow admins to execute all files" Description="" UserOrGroupSid="S-1-5-32-544" Action="Allow">
