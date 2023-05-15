@@ -35,20 +35,11 @@
     </FilePathRule>
   </RuleCollection>
   <RuleCollection Type="Exe" EnforcementMode="Enabled">
-    <FilePathRule Id="1712f2de-e1b6-4d3d-85a9-a7da49b796c1" Name="Deny everyone executables in the c:\Program Files" Description="" UserOrGroupSid="S-1-1-0" Action="Deny">
+    <FilePathRule Id="afd4074c-4b47-4b55-bb6d-f35ea215408b" Name="Deny everyone execution for select executables execution" Description="" UserOrGroupSid="S-1-5-32-545" Action="Deny">
       <Conditions>
-        <FilePathCondition Path="%PROGRAMFILES%\*" />
-      </Conditions>
-      <Exceptions>
-        <FilePathCondition Path="*chrome.exe" />
-        <FilePathCondition Path="*firefox.exe" />
-        <FilePathCondition Path="*TABTIP32.exe" />
-        <FilePathCondition Path="%PROGRAMFILES%\WINDOWS DEFENDER ADVANCED THREAT PROTECTION\*" />
-      </Exceptions>
-    </FilePathRule>
-    <FilePathRule Id="afd4074c-4b47-4b55-bb6d-f35ea215408b" Name="Deny everyone executables in c:\Windows folder" Description="" UserOrGroupSid="S-1-1-0" Action="Deny">
-      <Conditions>
-        <FilePathCondition Path="%WINDIR%\*" />
+        <FilePathCondition Path="%WINDIR%\explorer.exe" />
+        <FilePathCondition Path="%WINDIR%\*powershell*.exe" />
+        <FilePathCondition Path="%WINDIR%\*cmd.exe" />
       </Conditions>
       <Exceptions>
         <FilePathCondition Path="%SYSTEM32%\catroot2\*" />
